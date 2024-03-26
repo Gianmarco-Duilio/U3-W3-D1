@@ -1,10 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
-import mainReducer from "../reducers"; // non serve /index, basta puntare alla cartella che lo contiene
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import favoritesJobs from "../reducers/favorites"; // non serve /index, basta puntare alla cartella che lo contiene
+import searchJobsReducer from "../reducers/search";
 
-// configureStore è la funzione principale di redux, quella che GENERA lo stato condiviso
+const unifiedReducers = combineReducers({
+  favorite: favoritesJobs,
+  search: searchJobsReducer,
+});
 
 const store = configureStore({
-  reducer: mainReducer,
+  reducer: unifiedReducers,
 });
 
 export default store;

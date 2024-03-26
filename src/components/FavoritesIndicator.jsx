@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const FavoritesIndicator = () => {
   const favoritesLenght = useSelector((state) => {
-    return state.favorites.content.length;
+    return state.favorite.content.length;
   });
 
   const navigate = useNavigate();

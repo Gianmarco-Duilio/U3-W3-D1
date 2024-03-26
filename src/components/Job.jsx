@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { PiHeartStraightFill } from "react-icons/pi";
+import { addToFavorites } from "../redux/actions";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
@@ -20,10 +21,7 @@ const Job = ({ data }) => {
         <Button
           style={{ border: "none", backgroundColor: "#ffffff" }}
           onClick={() => {
-            dispatch({
-              type: "ADD_TO_FAVORITES",
-              payload: data,
-            });
+            dispatch(addToFavorites(data));
           }}
         >
           <PiHeartStraightFill
