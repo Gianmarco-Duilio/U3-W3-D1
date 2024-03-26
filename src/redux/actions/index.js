@@ -27,11 +27,11 @@ export const getJobs = (query) => {
           throw new Error("Error fetching results");
         }
       })
-      .then(({ fetchedJobs }) => {
+      .then(({ data }) => {
         console.log("GETSTATE, SECONDO PARAMETRO DELLA FUNZIONE ASINCRONA", getState());
         dispatch({
           type: GET_JOBS,
-          payload: fetchedJobs,
+          payload: data,
         });
       })
       .catch((error) => {
@@ -39,3 +39,22 @@ export const getJobs = (query) => {
       });
   };
 };
+
+// export const getJobs = (query) => {
+//   return async (dispatch, getState) => {
+//     try {
+//       const response = await fetch(baseEndpoint + query + "&limit=20");
+//       if (response.ok) {
+//         const { fetchedJobs } = await response.json();
+//         dispatch({
+//           type: GET_JOBS,
+//           payload: fetchedJobs,
+//         });
+//       } else {
+//         alert("Error fetching results");
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
